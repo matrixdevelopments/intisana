@@ -27,7 +27,7 @@ return [
 	|
 	*/
 
-	'model' => App\User::class,
+	'model' => App\Models\Usuario::class,
 	/*
 	|--------------------------------------------------------------------------
 	| Authentication Table
