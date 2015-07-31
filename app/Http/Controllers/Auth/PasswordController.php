@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Intisana\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Intisana\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller {

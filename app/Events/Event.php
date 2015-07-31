@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Intisana\Events;
 
 abstract class Event {
 	//

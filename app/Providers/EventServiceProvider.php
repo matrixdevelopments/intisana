@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Intisana\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -11,8 +11,8 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'App\Events\SomeEvent' => [
-			'App\Listeners\EventListener',
+		'Intisana\Events\SomeEvent' => [
+			'Intisana\Listeners\EventListener',
 		],
 	];
 

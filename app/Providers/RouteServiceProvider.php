@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Intisana\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
@@ -11,7 +11,7 @@ class RouteServiceProvider extends ServiceProvider {
 	 * In addition, it is set as the URL generator's root namespace.
 	 * @var string
 	 */
-	protected $namespace = 'App\Http\Controllers';
+	protected $namespace = 'Intisana\Http\Controllers';
 
 	/**
 	 * Define your route model bindings, pattern filters, etc.

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Intisana\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

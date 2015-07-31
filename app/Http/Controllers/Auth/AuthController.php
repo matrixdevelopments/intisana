@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Intisana\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\User;
+use Intisana\Http\Controllers\Controller;
+use Intisana\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Validator;
