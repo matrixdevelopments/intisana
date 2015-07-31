@@ -131,13 +131,14 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		App\Providers\AppServiceProvider::class,
-		App\Providers\EventServiceProvider::class,
-		App\Providers\RouteServiceProvider::class,
+		Intisana\Providers\AppServiceProvider::class,
+		Intisana\Providers\EventServiceProvider::class,
+		Intisana\Providers\RouteServiceProvider::class,
 		/*
 		 * ide-helper provider only development
 		 */
 		Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+		Barryvdh\Debugbar\ServiceProvider::class,
 	],
 	/*
 	|--------------------------------------------------------------------------
@@ -184,7 +185,7 @@ return [
 		'URL' => Illuminate\Support\Facades\URL::class,
 		'Validator' => Illuminate\Support\Facades\Validator::class,
 		'View' => Illuminate\Support\Facades\View::class,
-
+		'Debugbar' => Barryvdh\Debugbar\Facade::class,
 	],
 
 ];
