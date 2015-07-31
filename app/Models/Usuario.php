@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
@@ -31,6 +31,8 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	 * @var array
 	 */
 	protected $hidden = ['passw_usr', 'remember_token'];
+
+	public $timestamps = false;
 
 	/**
 	 * Obtener el identificador único para el usuario.
