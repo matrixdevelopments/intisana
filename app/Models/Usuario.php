@@ -1,11 +1,29 @@
 <?php
 
-namespace App\Models;
+namespace Intisana\Models;
 
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
+/**
+ * Intisana\Models\Usuario
+ * @property integer $serial_usr
+ * @property string $login_usr
+ * @property string $passw_usr
+ * @property string $tipo_usr
+ * @property string $rev_usr
+ * @property string $ingreso_usr
+ * @property-read Profesor|Alumno|Familia $perfil
+ * @property-read string $email
+ * @method static Builder|Usuario whereSerialUsr($value)
+ * @method static Builder|Usuario whereLoginUsr($value)
+ * @method static Builder|Usuario wherePasswUsr($value)
+ * @method static Builder|Usuario whereTipoUsr($value)
+ * @method static Builder|Usuario whereRevUsr($value)
+ * @method static Builder|Usuario whereIngresoUsr($value)
+ */
 class Usuario extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	/**
@@ -30,11 +48,11 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 		switch($this->tipo_usr)
 		{
 			case 1:
-				return $this->hasOne('App\Models\Profesor', 'serial_usr_pro', 'serial_usr');
+				return $this->hasOne('Intisana\Models\Profesor', 'serial_usr_pro', 'serial_usr');
 			case 2:
-				return $this->hasOne('App\Models\Alumno', 'serial_usr_alu', 'serial_usr');
+				return $this->hasOne('Intisana\Models\Alumno', 'serial_usr_alu', 'serial_usr');
 			case 3:
-				return $this->hasOne('App\Models\Familia', 'serial_usr_paf', 'serial_usr');
+				return $this->hasOne('Intisana\Models\Familia', 'serial_usr_paf', 'serial_usr');
 		}
 	}
 
