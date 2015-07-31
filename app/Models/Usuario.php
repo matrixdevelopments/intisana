@@ -26,6 +26,26 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	 */
 	protected $fillable = ['serial_usr', 'login_usr', 'passw_usr', 'tipo_usr', 'rev_usr', 'ingreso_usr'];
 
+	public function perfil() {
+		switch($this->tipo_usr)
+		{
+			case 1:
+				return $this->hasOne('App\Models\Profesor', 'serial_usr_pro', 'serial_usr');
+			case 2:
+				return $this->hasOne('App\Models\Alumno', 'serial_usr_alu', 'serial_usr');
+			case 3:
+				return $this->hasOne('App\Models\Familia', 'serial_usr_paf', 'serial_usr');
+		}
+	}
+
+	/**
+	 * Método mágico para obtener el email
+	 * @return string
+	 */
+	public function getEmailAttribute() {
+		return $this->perfil->email;
+	}
+
 	/**
 	 * Los atributos excluidos del modelo JSON.
 	 * @var array
@@ -80,6 +100,6 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	 * @return string
 	 */
 	public function getEmailForPasswordReset() {
-		//por implementar
+		$this->email;
 	}
 }
