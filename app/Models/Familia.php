@@ -2,9 +2,9 @@
 
 namespace Intisana\Models;
 
-use Intisana\Interfaces\EmailProviderInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
+use Intisana\Interfaces\EmailProviderInterface;
 
 /**
  * Intisana\Models\Familia
@@ -126,8 +126,31 @@ class Familia extends Model implements EmailProviderInterface {
 	protected $fillable = ['codigo_paf', 'nombre_paf', 'apellido_paf', 'email_paf', 'nombrem_paf', 'apellidom_paf', 'emailm_paf'];
 
 	public function getEmailAttribute() {
-		$mails = [$this->email_paf, $this->emailm_paf];
+		$mails = [];
+		if(!empty($this->email_paf) AND !is_null($this->email_paf))
+		{
+			if(str_contains($this->email_paf, ' '))
+			{
+				$mails = array_merge($mails, explode(' ', $this->email_paf));
+			}
+			else
+			{
+				$mails[] = $this->email_paf;
+			}
+		}
 
-		return implode(',', $mails);
+		if(!empty($this->emailm_paf) AND !is_null($this->emailm_paf))
+		{
+			if(str_contains($this->emailm_paf, ' '))
+			{
+				$mails = array_merge($mails, explode(' ', $this->emailm_paf));
+			}
+			else
+			{
+				$mails[] = $this->emailm_paf;
+			}
+		}
+
+		return count($mails) == 0 ? null : implode(', ', $mails);
 	}
 }
