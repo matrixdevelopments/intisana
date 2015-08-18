@@ -118,6 +118,6 @@ class  Usuario extends Model implements AuthenticatableContract, CanResetPasswor
 	 * @return string
 	 */
 	public function getEmailForPasswordReset() {
-		$this->email;
+		return $this->email;
 	}
 }
