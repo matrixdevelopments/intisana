@@ -153,4 +153,8 @@ class Familia extends Model implements EmailProviderInterface {
 
 		return count($mails) == 0 ? null : implode(', ', $mails);
 	}
+
+	public function hijos() {
+		return $this->belongsToMany('Intisana\Models\Alumno', 'pfamilia_alumno', 'serial_paf_pafalu', 'serial_alu_pafalu');
+	}
 }
