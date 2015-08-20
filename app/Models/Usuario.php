@@ -24,7 +24,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Usuario whereRevUsr($value)
  * @method static Builder|Usuario whereIngresoUsr($value)
  */
-class Usuario extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class  Usuario extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	/**
 	 * Tabla de la base de datos usada en el Modelo
@@ -43,6 +43,14 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	 * @var array
 	 */
 	protected $fillable = ['serial_usr', 'login_usr', 'passw_usr', 'tipo_usr', 'rev_usr', 'ingreso_usr'];
+
+	/**
+	 * Los atributos excluidos del modelo JSON.
+	 * @var array
+	 */
+	protected $hidden = ['passw_usr', 'remember_token'];
+
+	public $timestamps = false;
 
 	public function perfil() {
 		switch($this->tipo_usr)
@@ -63,14 +71,6 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	public function getEmailAttribute() {
 		return $this->perfil->email;
 	}
-
-	/**
-	 * Los atributos excluidos del modelo JSON.
-	 * @var array
-	 */
-	protected $hidden = ['passw_usr', 'remember_token'];
-
-	public $timestamps = false;
 
 	/**
 	 * Obtener el identificador único para el usuario.
@@ -118,6 +118,6 @@ class Usuario extends Model implements AuthenticatableContract, CanResetPassword
 	 * @return string
 	 */
 	public function getEmailForPasswordReset() {
-		$this->email;
+		return $this->email;
 	}
 }

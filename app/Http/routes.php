@@ -1,17 +1,12 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 Route::get('/', function ()
 {
-	return view('welcome');
+	/**
+	 * @var \Illuminate\Database\Eloquent\Collection $alumnos
+	 */
+	$alumnos = \Intisana\Models\Usuario::whereTipoUsr(2)->take(3)->get();
+	$alumnos->each(function ($alumno)
+	{
+		echo $alumno->email;
+	});
 });
