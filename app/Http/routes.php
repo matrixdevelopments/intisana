@@ -4,9 +4,12 @@ Route::get('/', function ()
 	/**
 	 * @var \Illuminate\Database\Eloquent\Collection $alumnos
 	 */
-	$alumnos = \Intisana\Models\Usuario::whereTipoUsr(2)->take(3)->get();
-	$alumnos->each(function ($alumno)
-	{
-		echo $alumno->email;
-	});
+	$alumnos = \Intisana\Models\Usuario::whereTipoUsr(3)->take(3)->get();
+
+	return $alumnos->load([
+		'perfil' => function ($query)
+		{
+			$query->with('hijos');
+		}
+	]);
 });
